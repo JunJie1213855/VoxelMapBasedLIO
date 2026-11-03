@@ -1,0 +1,64 @@
+# ROS 2 Humble parameters. Extrinsics map LiDAR coordinates into the IMU frame.
+/**:
+  ros__parameters:
+    common:
+      lid_topic: /rslidar_points
+      imu_topic: /rslidar_imu_data
+      time_offset_lidar_to_imu: 0.0
+    preprocess:
+      lidar_type: 5 # ROBOSENSE_AIRY, native XYZIRT
+      scan_line: 96
+      scan_rate: 10.0
+      timestamp_unit: 0 # seconds=0, milliseconds=1, microseconds=2, nanoseconds=3
+      timestamp_is_absolute: true
+      blind: 0.5
+      max_range: 150.0
+      point_filter_num: 3
+      calib_laser: false
+    mapping:
+      down_sample_size: 0.5
+      max_iteration: 3
+      voxel_size: 3.0
+      max_layer: 4
+      layer_point_size:
+      - 5
+      - 5
+      - 5
+      - 5
+      - 5
+      plannar_threshold: 0.01
+      max_points_size: 1000
+      max_cov_points_size: 1000
+    noise_model:
+      ranging_cov: 0.04
+      angle_cov: 0.1
+      acc_cov_scale: 0.1
+      gyr_cov_scale: 0.1
+      b_acc_cov: 0.0001
+      b_gyr_cov: 0.0001
+    imu:
+      # Match FAST_LIO_ROBOAIRY: fuse built-in IMU and deskew points.
+      imu_en: true
+      gravity_ref: [-0.0205, -0.0912, -9.8684]
+      extrinsic_T:
+      - 0.0
+      - 0.0
+      - 0.0
+      # LiDAR -> IMU, copied from the user's FAST_LIO_ROBOAIRY profile.
+      extrinsic_R: [0.0, -1.0, 0.0,
+                    -1.0, 0.0, 0.0,
+                     0.0, 0.0, -1.0]
+    visualization:
+      pub_voxel_map: true
+      publish_max_voxel_layer: 4
+      pub_global_map: true
+      global_map_voxel_size: 0.5
+      map_publish_period: 2.0
+      max_global_map_points: 100000
+      max_voxel_planes: 5000
+      pub_point_cloud: true
+      dense_map_enable: false
+      pub_point_cloud_skip: 5
+    Result:
+      write_kitti_log: false
+      result_path: ''

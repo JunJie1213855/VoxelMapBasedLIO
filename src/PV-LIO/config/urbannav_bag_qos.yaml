@@ -1,0 +1,8 @@
+/imu/data:
+  reliability: reliable
+  history: keep_last
+  depth: 4000
+/velodyne_points:
+  reliability: reliable
+  history: keep_last
+  depth: 100

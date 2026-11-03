@@ -1,0 +1,83 @@
+Panels:
+- Class: rviz_common/Displays
+  Name: Displays
+Visualization Manager:
+  Class: ''
+  Global Options:
+    Fixed Frame: camera_init
+    Frame Rate: 10
+    Background Color: 40; 40; 40
+  Displays:
+  - Class: rviz_default_plugins/Grid
+    Name: Grid
+    Enabled: true
+    Cell Size: 1.0
+    Plane Cell Count: 30
+  - Class: rviz_default_plugins/PointCloud2
+    Name: Global map
+    Enabled: true
+    Topic:
+      Value: /Laser_map
+      Depth: 1
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Durability Policy: Transient Local
+    Style: Points
+    Size (Pixels): 2
+    Alpha: 0.6
+    Color Transformer: Intensity
+    Position Transformer: XYZ
+    Decay Time: 0.0
+  - Class: rviz_default_plugins/PointCloud2
+    Name: Current scan
+    Enabled: true
+    Topic:
+      Value: /cloud_registered
+      Depth: 1
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Durability Policy: Volatile
+    Style: Points
+    Size (Pixels): 2
+    Color Transformer: Intensity
+    Position Transformer: XYZ
+    Decay Time: 0.0
+  - Class: rviz_default_plugins/Path
+    Name: Trajectory
+    Enabled: true
+    Topic:
+      Value: /path
+      Depth: 1
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Durability Policy: Volatile
+    Color: 255; 85; 0
+    Line Style: Lines
+    Line Width: 0.03
+    Buffer Length: 1
+  - Class: rviz_default_plugins/MarkerArray
+    Name: Voxel planes
+    Enabled: true
+    Topic:
+      Value: /planes
+      Depth: 1
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Durability Policy: Transient Local
+  Tools:
+  - Class: rviz_default_plugins/Interact
+  - Class: rviz_default_plugins/MoveCamera
+  - Class: rviz_default_plugins/Select
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 80.0
+      Focal Point:
+        X: 0.0
+        Y: 0.0
+        Z: 0.0
+      Pitch: 0.7
+      Yaw: 0.8
+Window Geometry:
+  Width: 1280
+  Height: 800
